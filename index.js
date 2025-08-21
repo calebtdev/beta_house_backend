@@ -15,10 +15,13 @@ app.use(cors({
 }));
 
 const userRouter = require('./src/routes/userRoutes')
+const propertyRouter = require("./src/routes/propertyRouter")
 
 app.use(express.json())
 
 app.use('/api/v1/user', userRouter)
+
+app.use('/api/v1/properties', propertyRouter)
 
 app.use(errorHandler);
 
