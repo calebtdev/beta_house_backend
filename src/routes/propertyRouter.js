@@ -1,7 +1,9 @@
 const express = require("express")
 const router = express.Router()
-const { propertyController } = require("../controllers/propertyController")
+const { propertyController, getpropertyController } = require("../controllers/propertyController")
 
-router.get("/properties", propertyController)
+router.post("/", propertyController)
+
+router.get("/featured", getpropertyController)
 
 module.exports = router
