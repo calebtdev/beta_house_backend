@@ -4,6 +4,6 @@ const { propertyController, getpropertyController } = require("../controllers/pr
 
 router.post("/", propertyController)
 
-router.get("/featured", getpropertyController)
+router.get("/", getpropertyController)
 
 module.exports = router

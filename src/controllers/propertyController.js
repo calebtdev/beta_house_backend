@@ -3,7 +3,7 @@ const property = require("../models/propertiesScchema")
 const propertyController = async (req, res) => {
     const { title, type, amount, rooms, bathrooms, height, location, image_url, featured } = req.body
 
-    if (!title || !type || !amount || !rooms || !bathrooms || !height || !location || !image_url || !featured) {
+    if (!title || !type || !amount || !rooms || !bathrooms || !height || !location || !image_url) {
         return res.status(400).json({ msg: "Kindly fill in all details", err: error.message })
     }
 
@@ -16,16 +16,22 @@ const propertyController = async (req, res) => {
         })
     } catch (error) {
         console.log(error);
-        return res.status(500).json({ msg: "server error" })
+        return res.status(500).json({ msg: "server error", err: error.message })
     }
 }
 
 
 const getpropertyController = async (req, res) => {
     try {
-        // Fetch only featured properties
-        const featuredProperties = await property.find({ featured: true });
-        res.status(200).json(featuredProperties);
+        const { featured } = req.query
+        let query = {}
+
+        if (featured) {
+            query.featured = featured === 'true'
+        }
+
+        const properties = await property.find(query);
+        res.status(200).json(properties);
     } catch (error) {
         res.status(500).json({ msg: "Server error", error });
     }

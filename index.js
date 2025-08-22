@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require("express")
 const mongoose = require('mongoose')
-const errorHandler = require('../betahouse_backend/src/middleware/errorHandler');
+const errorHandler = require('./src/middleware/errorHandler');
 
 const cors = require("cors");
 
