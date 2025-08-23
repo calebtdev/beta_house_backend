@@ -73,7 +73,7 @@ const login = async (req, res) => {
         //send response
         res.status(200).json({
             msg: "Login sccessful", token,
-            user: { id: user._id, email: user.email }
+            user: { id: user._id, eemail: user.email, firstname: user.firstname, lastname: user.lastname }
         })
         console.log({ id: user._id, email: user.email })
     } catch (error) {
